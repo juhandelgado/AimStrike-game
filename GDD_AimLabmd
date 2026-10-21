@@ -1,0 +1,100 @@
+# GDD — Aim Lab 3D
+
+**Projeto:** Aim Lab 3D  
+**Tipo de jogo:** Treinamento de mira em primeira pessoa (FPS)  
+**Tecnologias:** HTML, CSS, JavaScript e Three.js  
+**Inteligências artificiais utilizadas:** ChatGPT e Claude  
+**Autor(es):** [coloque os nomes dos integrantes]  
+**Turma:** [coloque a turma]  
+**Instituição:** SENAI  
+**Data:** [coloque a data de entrega]
+
+## 1. Sobre o jogo
+
+Aim Lab 3D é um jogo de treinamento de mira em primeira pessoa, desenvolvido para navegador com JavaScript e a biblioteca Three.js. O jogador observa o cenário pela perspectiva de quem está segurando uma arma e treina sua precisão ao mirar e acertar alvos.
+
+O projeto possui um cenário tridimensional de treinamento, interface com informações da partida e modelos de armas. A intenção é criar uma experiência simples para praticar mira, reflexo e controle do mouse.
+
+## 2. Objetivo do jogo
+
+O objetivo principal é acertar o maior número possível de alvos dentro do tempo disponível, tentando manter a precisão e melhorar a pontuação. O jogador pode praticar a movimentação da mira e a reação aos alvos que aparecem no cenário.
+
+## 3. Tecnologias e recursos utilizados
+
+- **HTML:** estrutura da página e dos elementos da interface.
+- **CSS:** aparência visual, posicionamento e estilos da interface.
+- **JavaScript:** regras, controles, pontuação, temporizador e interação do jogo.
+- **Three.js:** criação e renderização do cenário 3D no navegador.
+- **GLTFLoader:** carregamento de modelos 3D no formato GLB/ glTF, incluindo armas e suas animações, quando integradas ao código.
+- **Pointer Lock Controls:** captura do mouse para controlar a visão em primeira pessoa, quando habilitada no projeto.
+
+## 4. Inteligências artificiais utilizadas
+
+### ChatGPT
+
+O ChatGPT foi utilizado como apoio durante o desenvolvimento. Ajudou a organizar e comentar arquivos, explicar trechos de JavaScript e Three.js, orientar a integração de modelos 3D e animações e sugerir formas de investigar problemas, como uma arma que não aparecia na tela.
+
+### Claude
+
+O Claude também foi utilizado como ferramenta de apoio para pensar na estrutura e nos recursos do jogo, sugerir melhorias e auxiliar na elaboração ou revisão de código e ideias para a experiência do jogador.
+
+As respostas das IAs foram usadas como apoio. O código e as sugestões precisam ser conferidos e testados pela equipe antes de serem considerados concluídos.
+
+## 5. Como o jogador interage com o jogo
+
+O jogador inicia o jogo no navegador, usa o mouse para direcionar a mira e clica para disparar contra os alvos. A interface apresenta informações da partida, como pontuação e tempo, conforme os recursos implementados. Quando o modelo de uma arma e suas animações estão corretamente carregados e integrados, elas aparecem durante a partida e podem ser acionadas pelos controles definidos no código.
+
+## 6. Teclas e controles
+
+Os controles abaixo representam os comandos planejados/indicados durante o desenvolvimento. Confirme-os na versão final do código antes da entrega, pois podem variar conforme a implementação:
+
+| Controle | Função |
+|---|---|
+| Mouse | Direcionar a visão e a mira. |
+| Botão esquerdo do mouse | Disparar contra os alvos. |
+| Tecla `R` | Solicitar recarga da arma, se essa função estiver implementada para a arma selecionada. |
+| Tecla `1` | Selecionar a primeira arma, se a troca de armas estiver implementada. |
+| Tecla `2` | Selecionar a segunda arma, se a troca de armas estiver implementada. |
+| `Esc` | Liberar o controle do mouse quando o modo de captura do mouse estiver ativo. |
+
+## 7. Pontuação, avanço e condições de partida
+
+A pontuação é obtida ao acertar alvos, de acordo com as regras implementadas no código. O tempo da rodada limita a duração do treinamento, quando o temporizador está ativo. O jogador procura acertar mais alvos e melhorar a precisão a cada tentativa.
+
+Este é um jogo de treino individual, sem uma condição tradicional de derrota contra outro jogador. A rodada termina quando o temporizador chega ao fim, caso essa regra esteja habilitada. Para a entrega, a equipe deve conferir no código como os acertos são contabilizados, se há penalidade por erro e qual é a duração exata da rodada, registrando aqui os valores reais.
+
+## 8. Uso de IA durante o desenvolvimento — exemplos de prompts
+
+Os prompts abaixo são exemplos representativos para documentar o tipo de ajuda solicitado. Ajuste-os para corresponder às mensagens realmente utilizadas pela equipe.
+
+**Exemplo 1 — organização do código (ChatGPT):**
+> Organize os arquivos HTML, CSS e JavaScript do meu jogo e adicione comentários explicativos, sem mudar a lógica ou modificar o funcionamento.
+
+**Exemplo 2 — integração de modelo 3D (ChatGPT):**
+> Ajude a integrar ao meu jogo Three.js um modelo de arma no formato GLB que já contém animações de disparo e recarga. Explique como carregar e reproduzir as animações.
+
+**Exemplo 3 — planejamento e melhorias (Claude):**
+> Analise a ideia do meu jogo de treinamento de mira em Three.js e sugira melhorias para os controles, a interface e a organização do projeto, explicando as mudanças de forma simples.
+
+**Como as sugestões foram utilizadas:** as IAs ajudaram a esclarecer conceitos, estruturar soluções e investigar erros. As sugestões precisaram ser adaptadas ao projeto e devem ser testadas no navegador. A equipe é responsável por compreender e validar o resultado final.
+
+## 9. Problemas encontrados e soluções tentadas
+
+### Modelo 3D de arma não aparecia
+
+**Problema:** após adicionar um modelo GLB, a arma não aparecia corretamente no jogo.  
+**Investigação/soluções tentadas:** conferir se o arquivo GLB estava na mesma pasta do HTML/JavaScript, verificar o caminho usado pelo `GLTFLoader`, observar mensagens no Console do navegador e ajustar escala, posição e rotação do modelo.
+
+### Posição e tamanho da arma
+
+**Problema:** modelos diferentes podem aparecer muito grandes, pequenos, altos ou deslocados, porque cada arquivo pode ter escala e orientação originais diferentes.  
+**Solução tentada:** ajustar gradualmente as coordenadas de posição, a escala e a rotação, testando o resultado a cada alteração.
+
+### Animações do modelo
+
+**Problema:** um arquivo GLB pode conter animações, mas elas não são reproduzidas automaticamente só por carregar o modelo.  
+**Solução necessária:** identificar os nomes dos clipes, criar e atualizar um `AnimationMixer` e acionar o clipe correto quando o jogador atirar ou recarregar. A equipe deve verificar se todas as animações estão realmente conectadas aos controles na versão entregue.
+
+## 10. Considerações finais
+
+O desenvolvimento do Aim Lab 3D permitiu praticar HTML, CSS, JavaScript e conceitos de renderização 3D com Three.js. As IAs ChatGPT e Claude foram utilizadas como apoio para aprender conceitos, organizar o código, pensar em melhorias e investigar problemas. A documentação e os arquivos devem ser revisados pela equipe para garantir que descrevam fielmente a versão final publicada no GitLab.

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aim Lab 3D — Neon Arena</title>
+<link href="style.css" rel="stylesheet"/>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<!-- Menu inicial e tela de resultados -->
+<div id="overlay">
+<div class="panel card" id="menuCard">
+<div class="eyebrow">Treinamento de mira • 3D</div>
+<h1>AIM LAB <span style="color:var(--cyan)">3D</span></h1>
+<p>Treine velocidade, precisão e rastreamento em uma arena neon futurista. Mire com o mouse e clique para acertar os alvos. A animação da arma é acionada ao atirar (R para recarregar).</p>
+<div class="fieldrow">
+<div><label for="mode">Modo de treino</label><select id="mode"><option value="grid">Gridshot — vários alvos</option><option value="reflex">Reflexshot — um alvo</option><option value="tracking">Tracking — alvos móveis</option></select></div>
+<div><label for="difficulty">Dificuldade</label><select id="difficulty"><option value="easy">Fácil</option><option selected="" value="medium">Médio</option><option value="hard">Difícil</option></select></div>
+</div>
+<button id="startBtn">COMEÇAR TREINAMENTO</button>
+<p style="font-size:11px;margin-bottom:0">Mouse: mirar • Clique esquerdo: atirar • ESC: pausar/liberar mouse</p>
+<div id="pauseNote">Partida pausada. Clique em “Continuar” e depois clique na arena para recuperar o controle da mira.</div>
+</div>
+<div class="panel card" id="resultCard" style="display:none">
+<div class="eyebrow">Relatório da sessão</div><h1 id="resultTitle">TREINO FINALIZADO</h1>
+<p id="resultSubtitle">Veja seu desempenho nesta rodada.</p>
+<div id="results"></div>
+<div class="buttons"><button id="againBtn">JOGAR NOVAMENTE</button><button class="secondary" id="menuBtn">VOLTAR AO MENU</button></div>
+</div>
+</div>
+<!-- Interface exibida durante o treinamento -->
+<div id="hud">
+<div id="stats">
+<div class="panel stat"><div class="label">Pontuação</div><div class="value" id="score">0</div></div>
+<div class="statGroup">
+<div class="panel stat"><div class="label">Tempo</div><div class="value" id="timer">60</div></div>
+<div class="panel stat"><div class="label">Precisão</div><div class="value" id="accuracy">0%</div></div>
+</div>
+<div class="statGroup">
+<div class="panel stat"><div class="label">Acertos / tiros</div><div class="value tiny" id="hitsShots">0 / 0</div></div>
+<div class="panel stat"><div class="label">Combo máx.</div><div class="value tiny" id="combo">0</div></div>
+</div>
+</div>
+<div id="centerAim"></div><div id="feed">ACERTO!</div>
+<div id="bottom"><div class="panel hint"><strong>MOUSE</strong> mirar   <strong>CLIQUE</strong> atirar<br/><strong>1 / 2</strong> trocar arma &nbsp; <strong>R</strong> recarregar   <strong>ESC</strong> pausar   <strong>60s</strong> por sessão</div><div class="panel" id="weaponLabel">CARREGANDO ARMA 3D...</div></div>
+</div>
+<script src="script.js" type="module"></script>
+</body>
+</html>
